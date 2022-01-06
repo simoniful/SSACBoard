@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit.git",
+        "state": {
+          "branch": "develop",
+          "revision": "466db39ee4ef32b0f7c8cd9f009aaf42f80beace",
+          "version": null
+        }
+      },
+      {
+        "package": "Toast",
+        "repositoryURL": "https://github.com/scalessec/Toast-Swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "0c9493eeacb102cc614da385cfaaf475379f4ab4",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
