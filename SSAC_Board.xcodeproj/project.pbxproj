@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F413F9372786BEB40001F3E2 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F413F9362786BEB40001F3E2 /* ChangePasswordView.swift */; };
+		F413F9392786BED30001F3E2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F413F9382786BED20001F3E2 /* ChangePasswordViewController.swift */; };
+		F413F93B2786BEE40001F3E2 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F413F93A2786BEE40001F3E2 /* ChangePasswordViewModel.swift */; };
+		F413F93E2786C4D90001F3E2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F413F93D2786C4D90001F3E2 /* RxCocoa */; };
+		F413F9402786C4D90001F3E2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F413F93F2786C4D90001F3E2 /* RxSwift */; };
 		F4755C13277DC65300CBE9C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C12277DC65300CBE9C9 /* AppDelegate.swift */; };
 		F4755C15277DC65300CBE9C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */; };
 		F4755C17277DC65300CBE9C9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C16277DC65300CBE9C9 /* WelcomeViewController.swift */; };
@@ -23,7 +28,7 @@
 		F4755C43277DE43800CBE9C9 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C42277DE43800CBE9C9 /* SignInView.swift */; };
 		F4755C45277DE44900CBE9C9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C44277DE44900CBE9C9 /* SignInViewController.swift */; };
 		F4755C47277DE51B00CBE9C9 /* SIgnInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C46277DE51B00CBE9C9 /* SIgnInViewModel.swift */; };
-		F4755C49277DE53800CBE9C9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C48277DE53800CBE9C9 /* Observable.swift */; };
+		F4755C49277DE53800CBE9C9 /* _Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C48277DE53800CBE9C9 /* _Observable.swift */; };
 		F4755C4C277DE6DA00CBE9C9 /* Extension + UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C4B277DE6DA00CBE9C9 /* Extension + UITextField.swift */; };
 		F4755C4E277DF0B400CBE9C9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C4D277DF0B300CBE9C9 /* APIService.swift */; };
 		F4755C50277DF0D400CBE9C9 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C4F277DF0D400CBE9C9 /* Endpoint.swift */; };
@@ -49,6 +54,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F413F9362786BEB40001F3E2 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		F413F9382786BED20001F3E2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		F413F93A2786BEE40001F3E2 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		F4755C0F277DC65300CBE9C9 /* SSAC_Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSAC_Board.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4755C12277DC65300CBE9C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +73,7 @@
 		F4755C42277DE43800CBE9C9 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F4755C44277DE44900CBE9C9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F4755C46277DE51B00CBE9C9 /* SIgnInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnInViewModel.swift; sourceTree = "<group>"; };
-		F4755C48277DE53800CBE9C9 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F4755C48277DE53800CBE9C9 /* _Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Observable.swift; sourceTree = "<group>"; };
 		F4755C4B277DE6DA00CBE9C9 /* Extension + UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITextField.swift"; sourceTree = "<group>"; };
 		F4755C4D277DF0B300CBE9C9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F4755C4F277DF0D400CBE9C9 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -95,7 +103,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F413F93E2786C4D90001F3E2 /* RxCocoa in Frameworks */,
 				F4755C2B277DC76700CBE9C9 /* Toast in Frameworks */,
+				F413F9402786C4D90001F3E2 /* RxSwift in Frameworks */,
 				F4755C28277DC75C00CBE9C9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +113,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F413F9322786BDF60001F3E2 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				F413F9332786BE0A0001F3E2 /* View */,
+				F413F9352786BE450001F3E2 /* ViewModel */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		F413F9332786BE0A0001F3E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F413F9362786BEB40001F3E2 /* ChangePasswordView.swift */,
+				F413F9382786BED20001F3E2 /* ChangePasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F413F9352786BE450001F3E2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F413F93A2786BEE40001F3E2 /* ChangePasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F4755C06277DC65300CBE9C9 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +164,7 @@
 				F4755C31277DE2D700CBE9C9 /* SignUp */,
 				F4755C3D277DE3FA00CBE9C9 /* SignIn */,
 				F4755C51277E89EF00CBE9C9 /* Posts */,
+				F413F9322786BDF60001F3E2 /* ChangePassword */,
 				F4755C912782C00500CBE9C9 /* CreatePost */,
 				F4755C9C27831F4F00CBE9C9 /* DetailPost */,
 				F4ECF5872785B8740026E8B2 /* Update */,
@@ -137,7 +174,7 @@
 				F4755C1D277DC65600CBE9C9 /* LaunchScreen.storyboard */,
 				F4755C4F277DF0D400CBE9C9 /* Endpoint.swift */,
 				F4755C4D277DF0B300CBE9C9 /* APIService.swift */,
-				F4755C48277DE53800CBE9C9 /* Observable.swift */,
+				F4755C48277DE53800CBE9C9 /* _Observable.swift */,
 				F4755C20277DC65600CBE9C9 /* Info.plist */,
 			);
 			path = SSAC_Board;
@@ -391,6 +428,8 @@
 			packageProductDependencies = (
 				F4755C27277DC75C00CBE9C9 /* SnapKit */,
 				F4755C2A277DC76700CBE9C9 /* Toast */,
+				F413F93D2786C4D90001F3E2 /* RxCocoa */,
+				F413F93F2786C4D90001F3E2 /* RxSwift */,
 			);
 			productName = SSAC_Board;
 			productReference = F4755C0F277DC65300CBE9C9 /* SSAC_Board.app */;
@@ -423,6 +462,7 @@
 			packageReferences = (
 				F4755C26277DC75C00CBE9C9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F4755C29277DC76700CBE9C9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				F413F93C2786C4D90001F3E2 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = F4755C10277DC65300CBE9C9 /* Products */;
 			projectDirPath = "";
@@ -454,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4755C47277DE51B00CBE9C9 /* SIgnInViewModel.swift in Sources */,
+				F413F9372786BEB40001F3E2 /* ChangePasswordView.swift in Sources */,
 				F4755C43277DE43800CBE9C9 /* SignInView.swift in Sources */,
 				F4755C17277DC65300CBE9C9 /* WelcomeViewController.swift in Sources */,
 				F4755C9B2782C6D700CBE9C9 /* CreateViewModel.swift in Sources */,
@@ -465,7 +506,7 @@
 				F4755C5A277E8A8E00CBE9C9 /* PostViewModel.swift in Sources */,
 				F4755C5F2781C1AA00CBE9C9 /* PostTableViewCell.swift in Sources */,
 				F4755C972782C05600CBE9C9 /* CreatePostView.swift in Sources */,
-				F4755C49277DE53800CBE9C9 /* Observable.swift in Sources */,
+				F4755C49277DE53800CBE9C9 /* _Observable.swift in Sources */,
 				F4755CA127831F9000CBE9C9 /* DetailPostView.swift in Sources */,
 				F4ECF58E2785B8EF0026E8B2 /* UpdateViewController.swift in Sources */,
 				F4755C13277DC65300CBE9C9 /* AppDelegate.swift in Sources */,
@@ -477,10 +518,12 @@
 				F4755C56277E8A6100CBE9C9 /* PostView.swift in Sources */,
 				F4755C30277DC91700CBE9C9 /* WelcomeVIew.swift in Sources */,
 				F4755C38277DE35100CBE9C9 /* SignUpView.swift in Sources */,
+				F413F93B2786BEE40001F3E2 /* ChangePasswordViewModel.swift in Sources */,
 				F4755C45277DE44900CBE9C9 /* SignInViewController.swift in Sources */,
 				F4755C992782C09C00CBE9C9 /* CreatePostViewController.swift in Sources */,
 				F4755CAD2783498500CBE9C9 /* DetailPostTableViewHeader.swift in Sources */,
 				F4755C5C27819F9A00CBE9C9 /* Post.swift in Sources */,
+				F413F9392786BED30001F3E2 /* ChangePasswordViewController.swift in Sources */,
 				F4755C4C277DE6DA00CBE9C9 /* Extension + UITextField.swift in Sources */,
 				F4755CA727831FDB00CBE9C9 /* Comment.swift in Sources */,
 				F4755C36277DE33100CBE9C9 /* SignUpViewController.swift in Sources */,
@@ -708,6 +751,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F413F93C2786C4D90001F3E2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F4755C26277DC75C00CBE9C9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -727,6 +778,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F413F93D2786C4D90001F3E2 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F413F93C2786C4D90001F3E2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F413F93F2786C4D90001F3E2 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F413F93C2786C4D90001F3E2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		F4755C27277DC75C00CBE9C9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4755C26277DC75C00CBE9C9 /* XCRemoteSwiftPackageReference "SnapKit" */;

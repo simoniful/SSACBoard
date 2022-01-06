@@ -8,8 +8,8 @@
 import Foundation
 
 class SignInViewModel {
-    var email: Observable<String> = Observable("")
-    var password: Observable<String> = Observable("")
+    var email: _Observable<String> = _Observable("")
+    var password: _Observable<String> = _Observable("")
     
     func requestUserSignIn(completion: @escaping () -> ()) {
         APIService.signIn(identifier: email.value, password: password.value) { userData, error in

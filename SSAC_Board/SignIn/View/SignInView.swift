@@ -34,6 +34,8 @@ class SignInView: UIView, ViewRepresentable {
         customizeTextFiled(emailTextField, "이메일 주소")
         customizeTextFiled(passwordTextField, "비밀번호")
         
+        passwordTextField.isSecureTextEntry = true
+        
         signInButton.setTitle("로그인", for: .normal)
         signInButton.setTitleColor(.white, for: .normal)
         signInButton.backgroundColor = .lightGray

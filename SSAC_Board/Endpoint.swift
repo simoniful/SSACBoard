@@ -30,6 +30,7 @@ enum Endpoint {
     case deleteComment(id: Int)
 }
 
+// [To-Do] 페이지네이션, 소팅
 extension Endpoint {
     var url: URL {
         switch self {
@@ -92,6 +93,7 @@ extension URLSession {
                     completion(nil, .invalidResponse)
                     return
                 }
+                // alert창 띄우고 확인 누르면 이동
                 guard response.statusCode == 200 else {
                     if response.statusCode == 401 {
                         UserDefaults.standard.set("", forKey: "token")

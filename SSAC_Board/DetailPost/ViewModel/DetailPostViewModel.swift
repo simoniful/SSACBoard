@@ -9,7 +9,7 @@ import Foundation
 
 class DetailPostViewModel {
     var comments: Comment = []
-    var commentText: Observable<String> = Observable("")
+    var commentText: _Observable<String> = _Observable("")
     
     func requestCommentData(_ postId: Int ,completion: @escaping () -> ()) {
         APIService.readComment(postId: postId) { commentData, error in

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SignUpViewController: UIViewController {
+    let disposeBag = DisposeBag()
     let signUpView = SignUpView()
     let viewModel = SignUpViewModel()
     
@@ -19,57 +22,63 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "새싹농장 가입하기"
-        
-        viewModel.email.bind { text in
-            self.signUpView.emailTextField.text = text
-        }
-        
-        viewModel.nickname.bind { text in
-            self.signUpView.nicknameTextFiled.text = text
-        }
-        
-        viewModel.password.bind { text in
-            self.signUpView.passwordTextField.text = text
-        }
-        
-        viewModel.checkPassword.bind { text in
-            self.signUpView.checkPasswordTextField.text = text
-        }
-        
-        signUpView.emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
-        
-        signUpView.nicknameTextFiled.addTarget(self, action: #selector(nicknameTextFiledDidChange(_:)), for: .editingChanged)
-        
-        signUpView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
-        
-        signUpView.checkPasswordTextField.addTarget(self, action: #selector(checkPasswordTextFieldDidChange(_:)), for: .editingChanged)
-        
-        signUpView.signUpButton.addTarget(self, action: #selector(signUpButtonClicked), for: .touchUpInside)
+        bind()
     }
     
-    @objc func emailTextFieldDidChange(_ textfield: UITextField) {
-        viewModel.email.value = textfield.text ?? ""
-    }
-    
-    @objc func nicknameTextFiledDidChange(_ textfield: UITextField) {
-        viewModel.nickname.value = textfield.text ?? ""
-    }
-    
-    @objc func passwordTextFieldDidChange(_ textfield: UITextField) {
-        viewModel.password.value = textfield.text ?? ""
-    }
-    
-    @objc func checkPasswordTextFieldDidChange(_ textfield: UITextField) {
-        viewModel.checkPassword.value = textfield.text ?? ""
-    }
-    
-    @objc func signUpButtonClicked() {
-        viewModel.requestUserSignIn {
-            DispatchQueue.main.async {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-                windowScene.windows.first?.makeKeyAndVisible()
+    func bind() {
+        let input = SignUpViewModel.Input(
+            email: signUpView.emailTextField.rx.text,
+            nickname: signUpView.nicknameTextFiled.rx.text,
+            password: signUpView.passwordTextField.rx.text,
+            checkPassword: signUpView.checkPasswordTextField.rx.text,
+            tap: signUpView.signUpButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.validEmailStatus
+            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.emailValidationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.validEmailText
+            .bind(to: signUpView.emailValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.validNicknameStatus
+            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.nicknameValidationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.validNicknameText
+            .bind(to: signUpView.nicknameValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.validPasswordStatus
+            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.passwordValidationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.validPasswordText
+            .bind(to: signUpView.passwordValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.differPasswordStatus
+            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.checkPasswordValidationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.differPasswordText
+            .bind(to: signUpView.checkPasswordValidationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        
+            
+        
+        output.sceneTransition
+            .subscribe { _ in
+                self.viewModel.requestUserSignIn(input: input) {
+                    DispatchQueue.main.async {
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                        windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+                        windowScene.windows.first?.makeKeyAndVisible()
+                    }
+                }
             }
-        }
+            .disposed(by: disposeBag)
     }
 }

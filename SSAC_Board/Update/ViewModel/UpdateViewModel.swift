@@ -9,7 +9,7 @@ import Foundation
 // 클로저 통한 수정 후 화면 전환시 페이지 반영
 // 댓글 작성 후 텍스트 초기화 ""
 class UpdateViewModel {
-    var text: Observable<String> = Observable("")
+    var text: _Observable<String> = _Observable("")
 
     func requestUpdatePost(_ postId: Int, completion: @escaping (Post?) -> ()) {
         APIService.updatePost(text: text.value, postId: postId) { postData, error in

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Observable<T> {
+class _Observable<T> {
     private var listener: ((T) -> ())?
     var value: T {
         didSet {

@@ -13,10 +13,12 @@ class PostViewController: UIViewController {
     
     override func loadView() {
         self.view = postView
+        let rightButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill"), style: .plain, target: self, action: #selector(rightButtonClicked))
+        self.navigationItem.rightBarButtonItem = rightButton
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .black
     }
-    
-    // [To-Do] 네비게이션바 우측 버튼을 통해 비밀번호 변경 view 이동 구현, Date 형식 변경
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "새싹농장"
@@ -43,6 +45,10 @@ class PostViewController: UIViewController {
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
+    
+    @objc func rightButtonClicked() {
+        self.navigationController?.pushViewController(ChangePasswordViewController(), animated: true)
+    }
 }
 
 extension PostViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,7 +62,14 @@ extension PostViewController: UITableViewDelegate, UITableViewDataSource {
         let data = viewModel.cellForRowAt(at: indexPath)
         cell.nickNameLabel.text = data.user.username
         cell.contentLabel.text = data.text
-        cell.createDateLabel.text = data.updatedAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let convertDate = dateFormatter.date(from: data.createdAt)
+        let myDateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+        myDateFormatter.locale = Locale(identifier:"ko_KR")
+        let convertStr = myDateFormatter.string(from: convertDate!)
+        cell.createDateLabel.text = convertStr
         cell.commentCountLabel.text = data.comments.count == 0 ? "댓글쓰기" : "댓글 \(data.comments.count)"
         return cell
     }

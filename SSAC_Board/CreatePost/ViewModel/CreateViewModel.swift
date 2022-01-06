@@ -8,7 +8,7 @@
 import Foundation
 
 class CreateViewModel {
-    var text: Observable<String> = Observable("")
+    var text: _Observable<String> = _Observable("")
 
     func requestCreatePost(completion: @escaping (Post?) -> ()) {
         APIService.createPost(text: text.value) { postData, error in

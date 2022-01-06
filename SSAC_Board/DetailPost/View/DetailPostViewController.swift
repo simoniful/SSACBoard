@@ -23,7 +23,7 @@ class DetailPostViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     
-    // TextView 입력시 keyboard 등장에 따른 뷰 동적 변화 notification
+    // [To-Do] TextView 입력시 keyboard 등장에 따른 뷰 동적 변화 notification
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +174,14 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailPostTableViewHeader.identifier) as? DetailPostTableViewHeader else { return UITableViewHeaderFooterView() }
         header.contentLabel.text = self.postData?.text
         header.nickNameLabel.text = self.postData?.user.username
-        header.dateLabel.text = self.postData?.createdAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let convertDate = dateFormatter.date(from: self.postData!.createdAt)
+        let myDateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분"
+        myDateFormatter.locale = Locale(identifier:"ko_KR")
+        let convertStr = myDateFormatter.string(from: convertDate!)
+        header.dateLabel.text = convertStr
         header.commentCountLabel.text = viewModel.numberOfRowInSection != 0 ? "댓글 \(viewModel.numberOfRowInSection)" : "댓글이 없습니다"
         return header
     }
