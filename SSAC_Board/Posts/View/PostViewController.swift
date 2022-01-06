@@ -47,7 +47,11 @@ class PostViewController: UIViewController {
     }
     
     @objc func rightButtonClicked() {
-        self.navigationController?.pushViewController(ChangePasswordViewController(), animated: true)
+        let vc = ChangePasswordViewController()
+        vc.btnActionHandler = {
+            self.view.makeToast("비밀번호가 변경되었습니다")
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

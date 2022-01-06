@@ -43,7 +43,7 @@ extension Endpoint {
         case .createPost:
             return .makeEndpoint("posts")
         case .readPost:
-            return .makeEndpoint("posts")
+            return .makeEndpoint("posts?_sort=created_at:desc")
         case .updatePost(id: let id):
             return .makeEndpoint("posts/\(id)")
         case .deletePost(id: let id):
@@ -80,7 +80,7 @@ extension URLSession {
     static func request<T: Codable>(_ session: URLSession = .shared, endpoint: URLRequest, completion: @escaping (T?, APIError? ) -> ()) {
         session.dataTask(endpoint) { data, response, error in
             DispatchQueue.main.async {
-                // response == 401일 경우 token 삭제 및 로그인 화면 이동 
+                print(response)
                 guard error == nil else {
                     completion(nil, .failed)
                     return

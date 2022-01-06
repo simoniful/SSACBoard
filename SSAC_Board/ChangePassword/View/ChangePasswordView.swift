@@ -35,6 +35,11 @@ class ChangePasswordView: UIView, ViewRepresentable {
         customizeTextFiled(currentPasswordTextFiled, "현재 비밀번호")
         customizeTextFiled(newPasswordTextField, "새 비밀번호")
         customizeTextFiled(checkPasswordTextField, "새 비밀번호 확인")
+        
+        currentPasswordTextFiled.isSecureTextEntry = true
+        newPasswordTextField.isSecureTextEntry = true
+        checkPasswordTextField.isSecureTextEntry = true
+        
         changeButton.setTitle("변경하기", for: .normal)
         changeButton.setTitleColor(.white, for: .normal)
         changeButton.backgroundColor = .lightGray

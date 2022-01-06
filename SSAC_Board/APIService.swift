@@ -30,6 +30,16 @@ class APIService {
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     
+    static func changePassword(currentPassword: String, newPassword: String, checkPassword: String, completion: @escaping (User?, APIError? ) -> ()) {
+        var request = URLRequest(url: Endpoint.changePassword.url)
+        let token = UserDefaults.standard.string(forKey: "token")!
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "currentPassword=\(currentPassword)&newPassword=\(newPassword)&confirmNewPassword=\(checkPassword)".data(using: .utf8, allowLossyConversion: false)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        URLSession.request(.shared, endpoint: request, completion: completion)
+    }
+    
     static func readPost(completion: @escaping ([Post]?, APIError? ) -> ()) {
         var request = URLRequest(url: Endpoint.readPost.url)
         let token = UserDefaults.standard.string(forKey: "token")!
@@ -107,4 +117,6 @@ class APIService {
         // request.addValue(“YOUR NAME”, forHTTPHeaderField: “name”)
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
+    
+    
 }

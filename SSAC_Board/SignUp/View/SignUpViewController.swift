@@ -66,9 +66,8 @@ class SignUpViewController: UIViewController {
             .bind(to: signUpView.checkPasswordValidationLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
+        // combineLatest 이용 - 전부 다 true일 때 변경되도록 바인드
             
-        
         output.sceneTransition
             .subscribe { _ in
                 self.viewModel.requestUserSignIn(input: input) {

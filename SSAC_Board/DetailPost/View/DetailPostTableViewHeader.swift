@@ -105,6 +105,7 @@ class DetailPostTableViewHeader: UITableViewHeaderFooterView, ViewRepresentable 
         commentStack.addArrangedSubview(commentCountLabel)
     }
     
+    // 제약 관련 경고가 뜨는데 어디서 잘못된 건지 알 수 없음 
     func setupConstraints() {
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
