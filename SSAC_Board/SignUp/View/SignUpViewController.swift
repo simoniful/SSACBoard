@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.validEmailStatus
-            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.emailValidationLabel.rx.isHidden)
+            .bind(to: signUpView.emailValidationLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         output.validEmailText
@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.validNicknameStatus
-            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.nicknameValidationLabel.rx.isHidden)
+            .bind(to: signUpView.nicknameValidationLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         output.validNicknameText
@@ -51,7 +51,7 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.validPasswordStatus
-            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.passwordValidationLabel.rx.isHidden)
+            .bind(to: signUpView.passwordValidationLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         output.validPasswordText
@@ -59,18 +59,30 @@ class SignUpViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.differPasswordStatus
-            .bind(to: signUpView.signUpButton.rx.isEnabled, signUpView.checkPasswordValidationLabel.rx.isHidden)
+            .bind(to: signUpView.checkPasswordValidationLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         output.differPasswordText
             .bind(to: signUpView.checkPasswordValidationLabel.rx.text)
             .disposed(by: disposeBag)
         
-        // combineLatest 이용 - 전부 다 true일 때 변경되도록 바인드
+        Observable.combineLatest(output.validEmailStatus, output.validNicknameStatus, output.validPasswordStatus, output.differPasswordStatus) { a, b, c, d -> Bool in
+            return a && b && c && d
+        }.bind(onNext: { result in
+            self.signUpView.signUpButton.isEnabled = result
+            if result {
+                UIView.animate(withDuration: 1) {
+                    self.signUpView.signUpButton.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
+                }
+            } else {
+                self.signUpView.signUpButton.backgroundColor = .lightGray
+            }
+        })
+            .disposed(by: disposeBag)
             
         output.sceneTransition
             .subscribe { _ in
-                self.viewModel.requestUserSignIn(input: input) {
+                self.viewModel.requestUserSignIn(input: input) {_ in
                     DispatchQueue.main.async {
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                         windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: SignInViewController())

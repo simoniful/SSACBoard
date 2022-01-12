@@ -80,7 +80,6 @@ extension URLSession {
     static func request<T: Codable>(_ session: URLSession = .shared, endpoint: URLRequest, completion: @escaping (T?, APIError? ) -> ()) {
         session.dataTask(endpoint) { data, response, error in
             DispatchQueue.main.async {
-                print(response)
                 guard error == nil else {
                     completion(nil, .failed)
                     return

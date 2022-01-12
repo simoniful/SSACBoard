@@ -66,6 +66,7 @@ class SignInView: UIView, ViewRepresentable {
     }
     
     func customizeTextFiled(_ textField:UITextField, _ placeholderText: String) {
+        textField.textColor = .black
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.systemGray])
