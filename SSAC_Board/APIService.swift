@@ -30,6 +30,7 @@ class APIService {
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     
+    // Single / Observable
     static func changePassword(currentPassword: String, newPassword: String, checkPassword: String, completion: @escaping (User?, APIError? ) -> ()) {
         var request = URLRequest(url: Endpoint.changePassword.url)
         let token = UserDefaults.standard.string(forKey: "token")!

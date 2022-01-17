@@ -77,11 +77,11 @@ class SignUpViewController: UIViewController {
             } else {
                 self.signUpView.signUpButton.backgroundColor = .lightGray
             }
-        })
-            .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
             
         output.sceneTransition
             .subscribe { _ in
+                // 값 전달 및 분기 처리 
                 self.viewModel.requestUserSignIn(input: input) {_ in
                     DispatchQueue.main.async {
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }

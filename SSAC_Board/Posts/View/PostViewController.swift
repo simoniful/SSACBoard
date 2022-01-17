@@ -19,6 +19,7 @@ class PostViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
 
+    // pageNation
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "새싹농장"

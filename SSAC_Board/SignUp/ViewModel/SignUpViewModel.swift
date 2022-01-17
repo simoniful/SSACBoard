@@ -50,6 +50,7 @@ class SignUpViewModel: CommonViewModel {
         let resultNickname = input.nickname
             .orEmpty
             .map { $0.count >= 2 }
+            // 구독 대상이 다수 여부 - 스트림 분할 X
             .share(replay: 1, scope: .whileConnected)
         
         let resultEmail = input.email
@@ -76,6 +77,7 @@ class SignUpViewModel: CommonViewModel {
     }
     
     func requestUserSignIn(input: Input, completion: @escaping (String?) -> ()) {
+        // 
         var nickname: String?
         var email: String?
         var password: String?
@@ -91,6 +93,11 @@ class SignUpViewModel: CommonViewModel {
         input.password.orEmpty
             .subscribe(onNext: { password = $0 })
             .disposed(by: disposeBag)
+        
+        // 1. skip, take 등 페이지 네이션
+        // 2. single
+        // 3. completable
+        // 4. 모듈화 
         
         APIService.signup(nickname: nickname!, email: email!, password: password!) { userData, error in
             if let error = error {
@@ -113,7 +120,7 @@ class SignUpViewModel: CommonViewModel {
             UserDefaults.standard.set(userData.user.username, forKey: "nickname")
             UserDefaults.standard.set(userData.user.id, forKey: "id")
             UserDefaults.standard.set(userData.user.email, forKey: "email")
-            completion("")
+            completion(nil)
         }
     }
 }

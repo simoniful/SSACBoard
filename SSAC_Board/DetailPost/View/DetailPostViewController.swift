@@ -54,7 +54,7 @@ class DetailPostViewController: UIViewController {
             self.detailPostView.tableView.reloadData()
         })
     }
-
+    
     @objc func rightButtonClicked() {
         guard let postId = postData?.user.id.description else { return }
         let myId = UserDefaults.standard.string(forKey: "id")!
