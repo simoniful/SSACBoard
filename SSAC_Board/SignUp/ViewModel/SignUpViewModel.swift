@@ -19,11 +19,7 @@ protocol CommonViewModel {
 
 class SignUpViewModel: CommonViewModel {
     var disposeBag: DisposeBag =  DisposeBag()
-    var validNicknameText = BehaviorRelay<String>(value: "닉네임은 최소 2자 이상 필요합니다")
-    var validEmailText = BehaviorRelay<String>(value: "적절한 이메일 형식이 아닙니다")
-    var validPasswordText = BehaviorRelay<String>(value: "비밀번호는 최소 4자 이상 필요합니다")
-    var differPasswordText = BehaviorRelay<String>(value: "작성한 비밀번호와 다릅니다")
-    
+   
     struct Input {
         let email: ControlProperty<String?>
         let nickname: ControlProperty<String?>
@@ -37,12 +33,6 @@ class SignUpViewModel: CommonViewModel {
         let validEmailStatus: Observable<Bool>
         let validPasswordStatus: Observable<Bool>
         let differPasswordStatus: Observable<Bool>
-        
-        let validNicknameText: BehaviorRelay<String>
-        let validEmailText: BehaviorRelay<String>
-        let validPasswordText: BehaviorRelay<String>
-        let differPasswordText: BehaviorRelay<String>
-        
         let sceneTransition: ControlEvent<Void>
     }
     
@@ -50,7 +40,6 @@ class SignUpViewModel: CommonViewModel {
         let resultNickname = input.nickname
             .orEmpty
             .map { $0.count >= 2 }
-            // 구독 대상이 다수 여부 - 스트림 분할 X
             .share(replay: 1, scope: .whileConnected)
         
         let resultEmail = input.email
@@ -67,7 +56,7 @@ class SignUpViewModel: CommonViewModel {
             return a == b
         }.share(replay: 1, scope: .whileConnected)
             
-        return Output(validNicknameStatus: resultNickname, validEmailStatus: resultEmail, validPasswordStatus: resultPassword, differPasswordStatus: resultCheckPassword, validNicknameText: validNicknameText, validEmailText: validEmailText, validPasswordText: validPasswordText, differPasswordText: differPasswordText, sceneTransition: input.tap)
+        return Output(validNicknameStatus: resultNickname, validEmailStatus: resultEmail, validPasswordStatus: resultPassword, differPasswordStatus: resultCheckPassword, sceneTransition: input.tap)
     }
     
     func isValidEmail(testStr:String) -> Bool {
@@ -76,30 +65,9 @@ class SignUpViewModel: CommonViewModel {
           return emailTest.evaluate(with: testStr)
     }
     
-    func requestUserSignIn(input: Input, completion: @escaping (String?) -> ()) {
-        // 
-        var nickname: String?
-        var email: String?
-        var password: String?
-        
-        input.nickname.orEmpty
-            .subscribe(onNext: { nickname = $0 })
-            .disposed(by: disposeBag)
+    func requestUserSignIn(nickname: String, email: String, password: String, completion: @escaping (String?) -> ()) {
 
-        input.email.orEmpty
-            .subscribe(onNext: { email = $0 })
-            .disposed(by: disposeBag)
-        
-        input.password.orEmpty
-            .subscribe(onNext: { password = $0 })
-            .disposed(by: disposeBag)
-        
-        // 1. skip, take 등 페이지 네이션
-        // 2. single
-        // 3. completable
-        // 4. 모듈화 
-        
-        APIService.signup(nickname: nickname!, email: email!, password: password!) { userData, error in
+        APIService.signup(nickname: nickname, email: email, password: password) { userData, error in
             if let error = error {
                 switch error {
                 case .invalid:

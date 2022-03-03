@@ -13,6 +13,7 @@ enum APIError: Error {
     case failed
     case invalidResponse
     case invalidData
+    case tokenExpired
 }
 
 class APIService {
@@ -30,7 +31,6 @@ class APIService {
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     
-    // Single / Observable
     static func changePassword(currentPassword: String, newPassword: String, checkPassword: String, completion: @escaping (User?, APIError? ) -> ()) {
         var request = URLRequest(url: Endpoint.changePassword.url)
         let token = UserDefaults.standard.string(forKey: "token")!
@@ -41,8 +41,18 @@ class APIService {
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     
-    static func readPost(completion: @escaping ([Post]?, APIError? ) -> ()) {
-        var request = URLRequest(url: Endpoint.readPost.url)
+    static func readPost(start: Int, limit: Int, completion: @escaping ([Post]?, APIError? ) -> ()) {
+        let urlString = "http://test.monocoding.com:1231/posts"
+        var component = URLComponents(string: urlString)
+                
+        let order = URLQueryItem(name: "_sort", value: "created_at:desc")
+        let start = URLQueryItem(name: "_start", value: "\(start)")
+        let limit = URLQueryItem(name: "_limit", value: "\(limit)")
+        component?.queryItems = [order, start, limit]
+        
+        let url = component?.url
+        
+        var request = URLRequest(url: url!)
         let token = UserDefaults.standard.string(forKey: "token")!
         request.httpMethod = Method.GET.rawValue
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -118,6 +128,4 @@ class APIService {
         // request.addValue(“YOUR NAME”, forHTTPHeaderField: “name”)
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
-    
-    
 }

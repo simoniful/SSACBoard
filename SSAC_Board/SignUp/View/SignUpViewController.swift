@@ -14,7 +14,6 @@ class SignUpViewController: UIViewController {
     let signUpView = SignUpView()
     let viewModel = SignUpViewModel()
     
-    // [To-Do] 버튼 enable에 따른 UI 변화, 유효성 검사, 비밀번호란 변경 
     override func loadView() {
         self.view = signUpView
     }
@@ -34,38 +33,6 @@ class SignUpViewController: UIViewController {
             tap: signUpView.signUpButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        output.validEmailStatus
-            .bind(to: signUpView.emailValidationLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        output.validEmailText
-            .bind(to: signUpView.emailValidationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        output.validNicknameStatus
-            .bind(to: signUpView.nicknameValidationLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        output.validNicknameText
-            .bind(to: signUpView.nicknameValidationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        output.validPasswordStatus
-            .bind(to: signUpView.passwordValidationLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        output.validPasswordText
-            .bind(to: signUpView.passwordValidationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        output.differPasswordStatus
-            .bind(to: signUpView.checkPasswordValidationLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        output.differPasswordText
-            .bind(to: signUpView.checkPasswordValidationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
         Observable.combineLatest(output.validEmailStatus, output.validNicknameStatus, output.validPasswordStatus, output.differPasswordStatus) { a, b, c, d -> Bool in
             return a && b && c && d
         }.bind(onNext: { result in
@@ -81,12 +48,19 @@ class SignUpViewController: UIViewController {
             
         output.sceneTransition
             .subscribe { _ in
-                // 값 전달 및 분기 처리 
-                self.viewModel.requestUserSignIn(input: input) {_ in
-                    DispatchQueue.main.async {
-                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                        windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-                        windowScene.windows.first?.makeKeyAndVisible()
+                let nickname = self.signUpView.nicknameTextFiled.text ?? ""
+                let email = self.signUpView.emailTextField.text ?? ""
+                let password = self.signUpView.passwordTextField.text ?? ""
+                
+                self.viewModel.requestUserSignIn(nickname: nickname, email: email, password: password) { errorMessage in
+                    if let errorMessage = errorMessage {
+                        self.view.makeToast(errorMessage)
+                    } else {
+                        DispatchQueue.main.async {
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                            windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+                            windowScene.windows.first?.makeKeyAndVisible()
+                        }
                     }
                 }
             }
