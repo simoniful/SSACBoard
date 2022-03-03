@@ -15,6 +15,9 @@
 		F46192D427D08DB8007DA796 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D327D08DB8007DA796 /* UIFont+Extension.swift */; };
 		F46192D627D08E06007DA796 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D527D08E06007DA796 /* UIViewController+Extension.swift */; };
 		F46192D827D08E62007DA796 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D727D08E62007DA796 /* URLSession+Extension.swift */; };
+		F46192DA27D0A66B007DA796 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D927D0A66B007DA796 /* Date+Extension.swift */; };
+		F46192DD27D0AFD7007DA796 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */; };
+		F46192DF27D0D77D007DA796 /* _Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192DE27D0D77D007DA796 /* _Observable.swift */; };
 		F4755C13277DC65300CBE9C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C12277DC65300CBE9C9 /* AppDelegate.swift */; };
 		F4755C15277DC65300CBE9C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */; };
 		F4755C17277DC65300CBE9C9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C16277DC65300CBE9C9 /* WelcomeViewController.swift */; };
@@ -38,7 +41,6 @@
 		F4755C5A277E8A8E00CBE9C9 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C59277E8A8E00CBE9C9 /* PostViewModel.swift */; };
 		F4755C5C27819F9A00CBE9C9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C5B27819F9A00CBE9C9 /* Post.swift */; };
 		F4755C5F2781C1AA00CBE9C9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C5D2781C1AA00CBE9C9 /* PostTableViewCell.swift */; };
-		F4755C602781C1AA00CBE9C9 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4755C5E2781C1AA00CBE9C9 /* PostTableViewCell.xib */; };
 		F4755C972782C05600CBE9C9 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C962782C05600CBE9C9 /* CreatePostView.swift */; };
 		F4755C992782C09C00CBE9C9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C982782C09C00CBE9C9 /* CreatePostViewController.swift */; };
 		F4755C9B2782C6D700CBE9C9 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C9A2782C6D700CBE9C9 /* CreateViewModel.swift */; };
@@ -61,6 +63,9 @@
 		F46192D327D08DB8007DA796 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		F46192D527D08E06007DA796 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		F46192D727D08E62007DA796 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		F46192D927D0A66B007DA796 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		F46192DE27D0D77D007DA796 /* _Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Observable.swift; sourceTree = "<group>"; };
 		F4755C0F277DC65300CBE9C9 /* SSAC_Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSAC_Board.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4755C12277DC65300CBE9C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +89,6 @@
 		F4755C59277E8A8E00CBE9C9 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		F4755C5B27819F9A00CBE9C9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F4755C5D2781C1AA00CBE9C9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		F4755C5E2781C1AA00CBE9C9 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		F4755C962782C05600CBE9C9 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		F4755C982782C09C00CBE9C9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		F4755C9A2782C6D700CBE9C9 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
@@ -141,6 +145,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F46192DB27D0AFBF007DA796 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		F4755C06277DC65300CBE9C9 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +180,7 @@
 				F4755C912782C00500CBE9C9 /* CreatePost */,
 				F4755C9C27831F4F00CBE9C9 /* DetailPost */,
 				F4ECF5872785B8740026E8B2 /* Update */,
+				F46192DB27D0AFBF007DA796 /* Util */,
 				F4755C4A277DE6B600CBE9C9 /* Extension */,
 				F4D5291827CFABA200BD7E41 /* Network */,
 				F4D5291727CFAB5E00BD7E41 /* Resources */,
@@ -261,6 +274,7 @@
 				F46192D327D08DB8007DA796 /* UIFont+Extension.swift */,
 				F46192D527D08E06007DA796 /* UIViewController+Extension.swift */,
 				F46192D727D08E62007DA796 /* URLSession+Extension.swift */,
+				F46192D927D0A66B007DA796 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -281,7 +295,6 @@
 				F4755C55277E8A6100CBE9C9 /* PostView.swift */,
 				F4755C57277E8A7200CBE9C9 /* PostViewController.swift */,
 				F4755C5D2781C1AA00CBE9C9 /* PostTableViewCell.swift */,
-				F4755C5E2781C1AA00CBE9C9 /* PostTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,6 +390,7 @@
 		F4D5291727CFAB5E00BD7E41 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F46192DE27D0D77D007DA796 /* _Observable.swift */,
 				F4755C12277DC65300CBE9C9 /* AppDelegate.swift */,
 				F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */,
 				F4755C1B277DC65600CBE9C9 /* Assets.xcassets */,
@@ -500,7 +514,6 @@
 				F4755C1F277DC65600CBE9C9 /* LaunchScreen.storyboard in Resources */,
 				F4755C1C277DC65600CBE9C9 /* Assets.xcassets in Resources */,
 				F4755CAB2783495200CBE9C9 /* DetailPostTableViewCell.xib in Resources */,
-				F4755C602781C1AA00CBE9C9 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,11 +541,14 @@
 				F4755CA127831F9000CBE9C9 /* DetailPostView.swift in Sources */,
 				F4ECF58E2785B8EF0026E8B2 /* UpdateViewController.swift in Sources */,
 				F4755C13277DC65300CBE9C9 /* AppDelegate.swift in Sources */,
+				F46192DA27D0A66B007DA796 /* Date+Extension.swift in Sources */,
+				F46192DD27D0AFD7007DA796 /* LoadingIndicator.swift in Sources */,
 				F46192D827D08E62007DA796 /* URLSession+Extension.swift in Sources */,
 				F4755C15277DC65300CBE9C9 /* SceneDelegate.swift in Sources */,
 				F4755CA527831FC100CBE9C9 /* DetailPostViewModel.swift in Sources */,
 				F4755CAA2783495200CBE9C9 /* DetailPostTableViewCell.swift in Sources */,
 				F4755C3C277DE3DB00CBE9C9 /* User.swift in Sources */,
+				F46192DF27D0D77D007DA796 /* _Observable.swift in Sources */,
 				F4755C4E277DF0B400CBE9C9 /* APIService.swift in Sources */,
 				F4755C56277E8A6100CBE9C9 /* PostView.swift in Sources */,
 				F4755C30277DC91700CBE9C9 /* WelcomeVIew.swift in Sources */,

@@ -24,6 +24,7 @@ enum Endpoint {
     case readPost
     case updatePost(id: Int)
     case deletePost(id: Int)
+    case countPost
     case createComment
     case readComment(id: Int)
     case updateComment(id: Int)
@@ -42,11 +43,13 @@ extension Endpoint {
         case .createPost:
             return .makeEndpoint("posts")
         case .readPost:
-            return .makeEndpoint("posts?_sort=created_at:desc")
+            return .makeEndpoint("posts")
         case .updatePost(id: let id):
             return .makeEndpoint("posts/\(id)")
         case .deletePost(id: let id):
             return .makeEndpoint("posts/\(id)")
+        case .countPost:
+            return .makeEndpoint("posts/count")
         case .createComment:
             return .makeEndpoint("comments")
         case .readComment(id: let id):

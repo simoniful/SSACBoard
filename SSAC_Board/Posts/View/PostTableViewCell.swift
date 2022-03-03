@@ -27,12 +27,14 @@ class PostTableViewCell: UITableViewCell, ViewRepresentable  {
         label.font = .systemFont(ofSize: 14)
         return label
     }()
+    
     let contentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         return label
     }()
+    
     let createDateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
@@ -55,6 +57,7 @@ class PostTableViewCell: UITableViewCell, ViewRepresentable  {
         imageView.tintColor = .gray
         return imageView
     }()
+    
     let commentCountLabel : UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
@@ -62,8 +65,14 @@ class PostTableViewCell: UITableViewCell, ViewRepresentable  {
         return label
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         setupView()
         setupConstraints()
     }

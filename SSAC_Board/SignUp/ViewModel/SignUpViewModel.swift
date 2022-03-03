@@ -65,22 +65,11 @@ class SignUpViewModel: CommonViewModel {
           return emailTest.evaluate(with: testStr)
     }
     
-    func requestUserSignIn(nickname: String, email: String, password: String, completion: @escaping (String?) -> ()) {
+    func requestUserSignIn(nickname: String, email: String, password: String, completion: @escaping (APIError?) -> ()) {
 
         APIService.signup(nickname: nickname, email: email, password: password) { userData, error in
             if let error = error {
-                switch error {
-                case .invalid:
-                    completion("유효하지 않은 접근입니다")
-                case .noData:
-                    completion("이메일과 비밀번호를 다시 확인해주세요")
-                case .failed:
-                    completion("이메일과 비밀번호를 다시 확인해주세요")
-                case .invalidResponse:
-                    completion("유효하지 않은 접근입니다")
-                case .invalidData:
-                    completion("유효하지 않은 데이터 형식입니다")
-                }
+                completion(error)
             }
             
             guard let userData = userData else { return }

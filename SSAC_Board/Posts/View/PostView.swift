@@ -9,23 +9,27 @@ import UIKit
 import SnapKit
 
 class PostView: UIView, ViewRepresentable {
-    let tableView = UITableView()
+    
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
+    
     let createPostViewButton : UIButton = {
         let button = UIButton()
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 35
+        button.backgroundColor = .systemIndigo
         button.tintColor = .white
-        button.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
         button.setImage(UIImage(systemName: "plus"), for: .normal)
-        let pointSize: CGFloat = 32
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: pointSize)
-        if #available(iOS 15.0, *) {
-            var config = UIButton.Configuration.plain()
-            config.preferredSymbolConfigurationForImage = imageConfig
-            button.configuration = config
-        } else {
-            button.setPreferredSymbolConfiguration(imageConfig, forImageIn: .normal)
-        }
+        button.layer.cornerRadius = 22
+        return button
+    }()
+    
+    let changePasswordButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .label
+        button.setImage(UIImage(systemName: "person"), for: .normal)
         return button
     }()
     

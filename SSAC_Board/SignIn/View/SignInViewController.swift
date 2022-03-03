@@ -38,8 +38,8 @@ class SignInViewController: UIViewController {
         }.bind { result in
             self.signInView.signInButton.isEnabled = result
             if result {
-                UIView.animate(withDuration: 1) {
-                    self.signInView.signInButton.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
+                UIView.animate(withDuration: 0.5) {
+                    self.signInView.signInButton.backgroundColor = .systemIndigo
                 }
             } else {
                 self.signInView.signInButton.backgroundColor = .lightGray
@@ -51,9 +51,9 @@ class SignInViewController: UIViewController {
                 let email = self.signInView.emailTextField.text ?? ""
                 let password = self.signInView.passwordTextField.text ?? ""
                 
-                self.viewModel.requestUserSignIn(email: email, password: password) { errerMessage in
-                    if let errerMessage = errerMessage {
-                        self.view.makeToast(errerMessage)
+                self.viewModel.requestUserSignIn(email: email, password: password) { error in
+                    if let error = error {
+                        self.view.makeToast(error.rawValue)
                     } else {
                         DispatchQueue.main.async {
                             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }

@@ -6,25 +6,71 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import RxRelay
 
 class PostViewModel {
+    var disposeBag: DisposeBag =  DisposeBag()
+    
+    var postsObservable: PublishRelay<[Post]> = PublishRelay()
+    var errorObservable: PublishSubject<APIError> = PublishSubject()
+    var postCount = PublishSubject<Int>()
+   
+    let refreshing = BehaviorRelay(value: false)
+    let refreshTrigger = PublishSubject<Void>()
+       
     var posts:[Post] = []
     
-    func requestPosts(completion: @escaping () -> ()) {
-        APIService.readPost { postData, error in
-            guard let postData = postData else { return }
-            self.posts = postData
-            completion()
+    func requestReadPost(start: Int, limit: Int, refresh: Bool = false) {
+        LoadingIndicator.shared.showIndicator()
+    
+        APIService.readPost(start: start, limit: limit) { [weak self] (data, error) in
+            guard let self = self else { return }
+            guard error == nil else {
+                self.errorObservable.onNext(error!)
+                print(error!)
+                return
+            }
+            guard let data = data else { return }
+            refresh == true ? (self.posts = data) : (self.posts += data)
+            self.postsObservable.accept(self.posts)
+            LoadingIndicator.shared.hideIndicator()
         }
     }
-}
-
-extension PostViewModel {
-    var numberOfRowInSection: Int {
-        return posts.count
+    
+    func requestReadPost() {
+        LoadingIndicator.shared.showIndicator()
+            
+        APIService.readPost(start: 0, limit: 20) { [weak self] (data, error) in
+            guard let self = self else { return }
+            guard error == nil else {
+                self.errorObservable.onNext(error!)
+                print(error!)
+                return
+            }
+            guard let data = data else { return }
+            self.posts = data
+            self.postsObservable.accept(self.posts)
+            LoadingIndicator.shared.hideIndicator()
+        }
     }
     
-    func cellForRowAt(at indexPath: IndexPath) -> Post {
-        return posts[indexPath.row]
+    func requestCountPost(errorHandler: @escaping (APIError?) -> Void) {
+        APIService.countPost { [weak self](count, error) in
+            guard error == nil else {
+                errorHandler(error!)
+                return
+            }
+            guard let count = count else {
+                return
+            }
+            self?.postCount.onNext(count)
+            errorHandler(nil)
+        }
+    }
+    
+    deinit {
+        disposeBag = DisposeBag()
     }
 }

@@ -23,11 +23,41 @@ class WelcomeView: UIView, ViewRepresentable {
         return view
     }()
     
-    let logoImageView = UIImageView()
-    let titleLabel = UILabel()
-    let subtitleLabel = UILabel()
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "SSACLogo")
+        return imageView
+    }()
     
-    let signUpViewButton = UIButton()
+    
+    let titleLabel : UILabel = {
+        let label = UILabel()
+        label.text = "주위의 게시판"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 17)
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "좋은 사람들과 즐거운 커뮤니티를 구성해보세요!"
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .gray
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let signUpViewButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemIndigo
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("시작하기", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
+    }()
     
     let horizontalStack: UIStackView = {
         let view = UIStackView()
@@ -37,8 +67,22 @@ class WelcomeView: UIView, ViewRepresentable {
         view.distribution = .equalSpacing
         return view
     }()
-    let guideLabel = UILabel()
-    let signInViewButton = UIButton()
+    
+    let guideLabel: UILabel = {
+        let label = UILabel()
+        label.text = "이미 계정이 있나요?"
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        return label
+    }()
+    
+    let signInViewButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그인", for: .normal)
+        button.setTitleColor(.systemIndigo, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        return button
+    }()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -55,33 +99,11 @@ class WelcomeView: UIView, ViewRepresentable {
     func setupView() {
         self.backgroundColor = .white
         addSubview(verticalStack)
-        verticalStack.backgroundColor = .white
-        logoImageView.image = UIImage(named: "SSACLogo")
-        titleLabel.text = "당신 근처의 새싹농장"
-        titleLabel.textAlignment = .center
-        titleLabel.font = .boldSystemFont(ofSize: 17)
-        subtitleLabel.text = "iOS 지식부터 바람의 나라까지\n지금 SeSac에서 함께해보세요!"
-        subtitleLabel.font = .systemFont(ofSize: 13)
-        subtitleLabel.textColor = .gray
-        subtitleLabel.numberOfLines = 2
-        subtitleLabel.textAlignment = .center
         verticalStack.addArrangedSubview(logoImageView)
         verticalStack.addArrangedSubview(titleLabel)
         verticalStack.addArrangedSubview(subtitleLabel)
-        
         addSubview(signUpViewButton)
-        signUpViewButton.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
-        signUpViewButton.setTitleColor(.white, for: .normal)
-        signUpViewButton.setTitle("시작하기", for: .normal)
-        signUpViewButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        
         addSubview(horizontalStack)
-        guideLabel.text = "이미 계정이 있나요?"
-        guideLabel.font = .systemFont(ofSize: 14)
-        guideLabel.textColor = .lightGray
-        signInViewButton.setTitle("로그인", for: .normal)
-        signInViewButton.setTitleColor(UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1), for: .normal)
-        signInViewButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
         horizontalStack.addArrangedSubview(guideLabel)
         horizontalStack.addArrangedSubview(signInViewButton)
     }
@@ -90,7 +112,6 @@ class WelcomeView: UIView, ViewRepresentable {
         logoImageView.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(logoImageView.snp.width).multipliedBy(1.0 / 1.0)
-
         }
         
         verticalStack.snp.makeConstraints {

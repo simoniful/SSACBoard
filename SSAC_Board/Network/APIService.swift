@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalid
-    case noData
-    case failed
-    case invalidResponse
-    case invalidData
-    case tokenExpired
+enum APIError: String, Error {
+    case invalid = "유효하지 않은 접근입니다"
+    case noData = "이메일과 비밀번호를 기입해주세요"
+    case failed = "이메일과 비밀번호를 다시 확인해주세요"
+    case invalidResponse = "정상적인 접근이 아닙니다"
+    case invalidData = "입력값이 올바르지 않습니다. 다시 확인해주세요"
+    case tokenExpired = "유효하지 않은 접근입니다. 다시 로그인해주세요"
 }
 
 class APIService {
@@ -86,6 +86,14 @@ class APIService {
         request.httpMethod = Method.DELETE.rawValue
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        URLSession.request(.shared, endpoint: request, completion: completion)
+    }
+    
+    static func countPost(completion: @escaping (Int?, APIError?) -> Void) {
+        var request = URLRequest(url: Endpoint.countPost.url)
+        let token = UserDefaults.standard.string(forKey: "token")!
+        request.setValue("bearer \(token)", forHTTPHeaderField: "Authorization")
+        
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     

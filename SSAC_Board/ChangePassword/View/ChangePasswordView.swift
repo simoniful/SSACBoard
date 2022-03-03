@@ -11,7 +11,16 @@ class ChangePasswordView: UIView, ViewRepresentable {
     let currentPasswordTextFiled = InsetTextField()
     let newPasswordTextField = InsetTextField()
     let checkPasswordTextField = InsetTextField()
-    let changeButton = UIButton()
+    let changeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("변경하기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .lightGray
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
+    }()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -31,7 +40,6 @@ class ChangePasswordView: UIView, ViewRepresentable {
         addSubview(newPasswordTextField)
         addSubview(checkPasswordTextField)
         addSubview(changeButton)
-        changeButton.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
         customizeTextFiled(currentPasswordTextFiled, "현재 비밀번호")
         customizeTextFiled(newPasswordTextField, "새 비밀번호")
         customizeTextFiled(checkPasswordTextField, "새 비밀번호 확인")
@@ -81,5 +89,8 @@ class ChangePasswordView: UIView, ViewRepresentable {
         textField.layer.borderWidth = 0.5
         textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
+        textField.isSecureTextEntry = true
+        textField.layer.cornerRadius = 8
+        textField.clipsToBounds = true
     }
 }

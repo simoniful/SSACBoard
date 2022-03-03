@@ -11,7 +11,16 @@ import SnapKit
 class SignInView: UIView, ViewRepresentable {
     let emailTextField = InsetTextField()
     let passwordTextField = InsetTextField()
-    let signInButton = UIButton()
+    let signInButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .lightGray
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
+    }()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -30,16 +39,9 @@ class SignInView: UIView, ViewRepresentable {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(signInButton)
-        signInButton.backgroundColor = UIColor(red: 59/255, green: 195/255, blue: 113/255, alpha: 1)
         customizeTextFiled(emailTextField, "이메일 주소")
         customizeTextFiled(passwordTextField, "비밀번호")
-        
         passwordTextField.isSecureTextEntry = true
-        
-        signInButton.setTitle("로그인", for: .normal)
-        signInButton.setTitleColor(.white, for: .normal)
-        signInButton.backgroundColor = .lightGray
-        signInButton.titleLabel?.font = .boldSystemFont(ofSize: 17)
     }
     
     func setupConstraints() {
@@ -69,6 +71,8 @@ class SignInView: UIView, ViewRepresentable {
         textField.textColor = .black
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 8
+        textField.clipsToBounds = true
         textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
     }
