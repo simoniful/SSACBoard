@@ -10,11 +10,8 @@ import RxSwift
 import RxCocoa
 
 class CreateViewModel {
-
     var text = BehaviorRelay(value: "")
-    var tap = PublishSubject<Void>()
     
-
     func requestCreatePost(completion: @escaping (Post?) -> ()) {
         APIService.createPost(text: text.value) { postData, error in
             guard let postData = postData else { return }

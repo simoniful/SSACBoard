@@ -20,7 +20,6 @@ class UpdateViewModel {
     }
     
     func requestUpdateComment(commentId: Int ,postId: Int, completion: @escaping (CommentElement?) -> ()) {
-        print(#function)
         APIService.updateComment(commentId: commentId, postId: postId, comment: text.value) { commentData, error in
             guard let commentData = commentData else { return }
             completion(commentData)

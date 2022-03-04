@@ -38,6 +38,17 @@ class PostViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.requestReadPost(start: 0, limit: 20, refresh: true)
+        self.viewModel.requestCountPost { [weak self](error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.APIErrorHandler(error: error, message: "포스트 갱신에 실패했습니다.")
+            }
+        }
+    }
+    
     func setNavigation() {
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(customView: postView.changePasswordButton)
     }
