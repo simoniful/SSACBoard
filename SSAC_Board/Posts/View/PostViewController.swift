@@ -13,6 +13,7 @@ class PostViewController: UIViewController {
     let postView = PostView()
     let viewModel = PostViewModel()
     let disposeBag = DisposeBag()
+    let refreshControl = UIRefreshControl()
     
     var start = 0
     var limit = 20
@@ -27,6 +28,7 @@ class PostViewController: UIViewController {
         self.title = "새싹농장"
         setNavigation()
         bind()
+        postView.tableView.refreshControl = refreshControl
         viewModel.requestReadPost(start: start, limit: limit)
         viewModel.requestCountPost { [weak self] (error) in
             guard let self = self else { return }
@@ -60,9 +62,6 @@ class PostViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
-        
-        let refreshControl = UIRefreshControl()
-        postView.tableView.refreshControl = refreshControl
         
         viewModel.errorObservable
            .subscribe { [weak self](error) in

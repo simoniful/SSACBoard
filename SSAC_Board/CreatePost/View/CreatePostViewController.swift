@@ -16,6 +16,8 @@ class CreatePostViewController: UIViewController {
         self.navigationItem.title = "새싹농장 글쓰기"
         let rightButton: UIBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(rightButtonClicked))
         let leftButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(leftButtonClicked))
+        rightButton.tintColor = .black
+        leftButton.tintColor = .black
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.leftBarButtonItem = leftButton
     }
@@ -27,6 +29,12 @@ class CreatePostViewController: UIViewController {
         }
         
         createPostView.textView.delegate = self
+    }
+    
+    func bind() {
+        createPostView.textView.rx.text
+            .orEmpty
+            .bind(to: viewModel.text)
     }
     
     

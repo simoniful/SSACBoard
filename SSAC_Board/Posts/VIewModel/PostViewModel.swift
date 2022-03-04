@@ -16,9 +16,6 @@ class PostViewModel {
     var postsObservable: PublishRelay<[Post]> = PublishRelay()
     var errorObservable: PublishSubject<APIError> = PublishSubject()
     var postCount = PublishSubject<Int>()
-   
-    let refreshing = BehaviorRelay(value: false)
-    let refreshTrigger = PublishSubject<Void>()
        
     var posts:[Post] = []
     

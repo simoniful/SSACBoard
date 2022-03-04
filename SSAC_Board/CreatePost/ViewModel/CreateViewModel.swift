@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class CreateViewModel {
-    var text: _Observable<String> = _Observable("")
+
+    var text = BehaviorRelay(value: "")
+    var tap = PublishSubject<Void>()
+    
 
     func requestCreatePost(completion: @escaping (Post?) -> ()) {
         APIService.createPost(text: text.value) { postData, error in
