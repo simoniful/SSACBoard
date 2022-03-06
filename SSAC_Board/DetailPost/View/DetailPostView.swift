@@ -9,13 +9,20 @@ import UIKit
 import SnapKit
 
 class DetailPostView: UIView, ViewRepresentable {
-    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let tableView:UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.register(DetailPostTableViewHeader.self, forHeaderFooterViewReuseIdentifier: DetailPostTableViewHeader.identifier)
+        tableView.register(DetailPostTableViewCell.self, forCellReuseIdentifier: DetailPostTableViewCell.identifier)
+        return tableView
+    }()
+    
     let textView : UITextView = {
         let textview = UITextView()
         textview.clipsToBounds = true
         textview.backgroundColor = .systemGray5
         textview.layer.cornerRadius = 10
         textview.autocapitalizationType = .none
+        textview.isScrollEnabled = false
         return textview
     }()
     let writeStack: UIStackView = {
@@ -37,6 +44,20 @@ class DetailPostView: UIView, ViewRepresentable {
         return button
     }()
     
+    let updateButton : UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+        
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
@@ -54,6 +75,7 @@ class DetailPostView: UIView, ViewRepresentable {
         self.backgroundColor = .white
         tableView.sectionFooterHeight = 0
         tableView.backgroundColor = .white
+        tableView.estimatedSectionHeaderHeight = 100
         addSubview(tableView)
         addSubview(writeStack)
         writeStack.addArrangedSubview(textView)
@@ -62,9 +84,9 @@ class DetailPostView: UIView, ViewRepresentable {
     
     func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.equalTo(super.safeAreaLayoutGuide).offset(15)
-            $0.leading.equalToSuperview().offset(15)
-            $0.trailing.equalToSuperview().offset(-15)
+            $0.top.equalTo(super.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
         
         writeStack.snp.makeConstraints {

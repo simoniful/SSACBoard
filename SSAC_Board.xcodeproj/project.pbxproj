@@ -49,7 +49,6 @@
 		F4755CA527831FC100CBE9C9 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CA427831FC100CBE9C9 /* DetailPostViewModel.swift */; };
 		F4755CA727831FDB00CBE9C9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CA627831FDB00CBE9C9 /* Comment.swift */; };
 		F4755CAA2783495200CBE9C9 /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CA82783495200CBE9C9 /* DetailPostTableViewCell.swift */; };
-		F4755CAB2783495200CBE9C9 /* DetailPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4755CA92783495200CBE9C9 /* DetailPostTableViewCell.xib */; };
 		F4755CAD2783498500CBE9C9 /* DetailPostTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CAC2783498500CBE9C9 /* DetailPostTableViewHeader.swift */; };
 		F4ECF58C2785B8E10026E8B2 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECF58B2785B8E10026E8B2 /* UpdateView.swift */; };
 		F4ECF58E2785B8EF0026E8B2 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECF58D2785B8EF0026E8B2 /* UpdateViewController.swift */; };
@@ -97,7 +96,6 @@
 		F4755CA427831FC100CBE9C9 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
 		F4755CA627831FDB00CBE9C9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F4755CA82783495200CBE9C9 /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
-		F4755CA92783495200CBE9C9 /* DetailPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPostTableViewCell.xib; sourceTree = "<group>"; };
 		F4755CAC2783498500CBE9C9 /* DetailPostTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewHeader.swift; sourceTree = "<group>"; };
 		F4ECF58B2785B8E10026E8B2 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		F4ECF58D2785B8EF0026E8B2 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 				F4755CA027831F9000CBE9C9 /* DetailPostView.swift */,
 				F4755CA227831FA100CBE9C9 /* DetailPostViewController.swift */,
 				F4755CA82783495200CBE9C9 /* DetailPostTableViewCell.swift */,
-				F4755CA92783495200CBE9C9 /* DetailPostTableViewCell.xib */,
 				F4755CAC2783498500CBE9C9 /* DetailPostTableViewHeader.swift */,
 			);
 			path = View;
@@ -513,7 +510,6 @@
 			files = (
 				F4755C1F277DC65600CBE9C9 /* LaunchScreen.storyboard in Resources */,
 				F4755C1C277DC65600CBE9C9 /* Assets.xcassets in Resources */,
-				F4755CAB2783495200CBE9C9 /* DetailPostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

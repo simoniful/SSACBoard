@@ -25,7 +25,7 @@ class SignUpViewModel: CommonViewModel {
         let nickname: ControlProperty<String?>
         let password: ControlProperty<String?>
         let checkPassword: ControlProperty<String?>
-        let tap: ControlEvent<Void>
+        let singUpButtonTap: ControlEvent<Void>
     }
     
     struct Output {
@@ -56,7 +56,7 @@ class SignUpViewModel: CommonViewModel {
             return a == b
         }.share(replay: 1, scope: .whileConnected)
             
-        return Output(validNicknameStatus: resultNickname, validEmailStatus: resultEmail, validPasswordStatus: resultPassword, differPasswordStatus: resultCheckPassword, sceneTransition: input.tap)
+        return Output(validNicknameStatus: resultNickname, validEmailStatus: resultEmail, validPasswordStatus: resultPassword, differPasswordStatus: resultCheckPassword, sceneTransition: input.singUpButtonTap)
     }
     
     func isValidEmail(testStr:String) -> Bool {

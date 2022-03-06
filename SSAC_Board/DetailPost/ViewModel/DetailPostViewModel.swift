@@ -6,16 +6,23 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class DetailPostViewModel {
-    var comments: Comment = []
-    var commentText: _Observable<String> = _Observable("")
+    var disposeBag: DisposeBag =  DisposeBag()
     
-    func requestCommentData(_ postId: Int ,completion: @escaping () -> ()) {
+    var commentText = BehaviorRelay(value: "")
+    
+    var commentsObservable: PublishRelay<Comment> = PublishRelay()
+    var errorObservable: PublishSubject<APIError> = PublishSubject()
+    var comments: Comment = []
+
+    func requestCommentData(_ postId: Int) {
         APIService.readComment(postId: postId) { commentData, error in
             guard let commentData = commentData else { return }
             self.comments = commentData
-            completion()
+            self.commentsObservable.accept(self.comments)
         }
     }
     
@@ -23,6 +30,7 @@ class DetailPostViewModel {
         APIService.createComment(postId: postId, comment: commentText.value) { commentData, error in
             guard let commentData = commentData else { return }
             self.comments.append(commentData)
+            self.commentsObservable.accept(self.comments)
             completion()
         }
     }
@@ -40,6 +48,7 @@ class DetailPostViewModel {
                 element.id != commentData.id
             }
             self.comments = fileredComments
+            self.commentsObservable.accept(self.comments)
             completion()
         }
     }

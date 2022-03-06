@@ -16,16 +16,16 @@ class CreatePostViewController: UIViewController {
     
     override func loadView() {
         self.view = createPostView
+        setNavigation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigation()
         bind()
     }
     
     func setNavigation() {
-        title = "새싹농장 글쓰기"
+        title = "새 글쓰기"
         self.navigationController?.navigationBar.topItem?.leftBarButtonItem =
         UIBarButtonItem(customView: createPostView.closeButton)
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem =

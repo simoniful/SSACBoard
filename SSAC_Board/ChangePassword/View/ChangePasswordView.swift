@@ -21,6 +21,12 @@ class ChangePasswordView: UIView, ViewRepresentable {
         button.clipsToBounds = true
         return button
     }()
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

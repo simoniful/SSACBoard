@@ -7,10 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class DetailPostTableViewCell: UITableViewCell, ViewRepresentable {
     static let identifier = "DetailPostTableViewCell"
-    var updateButtonAction : (() -> ())?
+    var updateButtonAction: (() -> ()) = {}
     
     let nickNameLabel: UILabel = {
         let label = UILabel()
@@ -32,20 +34,27 @@ class DetailPostTableViewCell: UITableViewCell, ViewRepresentable {
         return button
     }()
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.isUserInteractionEnabled = true
+        selectionStyle = .none
         setupView()
         setupConstraints()
-        updateButton.addTarget(self, action: #selector(updateButtonClicked(_:)), for: .touchUpInside)
+        updateButton.addTarget(self, action: #selector(updateButtonClicked), for: .touchUpInside)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+        setupConstraints()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    @objc func updateButtonClicked(_ sender: UIButton){
-        updateButtonAction?()
+    @objc func updateButtonClicked(){
+        updateButtonAction()
     }
     
     func setupView() {
@@ -57,20 +66,20 @@ class DetailPostTableViewCell: UITableViewCell, ViewRepresentable {
     func setupConstraints() {
         nickNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
-            $0.leading.equalTo(0)
-            $0.trailing.equalTo(0)
+            $0.leading.equalTo(15)
+            $0.trailing.equalTo(-15)
         }
         
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(nickNameLabel.snp.bottom).offset(5)
-            $0.leading.equalTo(0)
-            $0.trailing.equalTo(updateButton.snp.leading)
+            $0.leading.equalTo(15)
+            $0.trailing.equalTo(updateButton.snp.leading).offset(-10)
             $0.bottom.equalToSuperview().offset(-15)
         }
         
         updateButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalTo(0)
+            $0.trailing.equalTo(-15)
             $0.width.equalTo(25)
             $0.height.equalTo(25)
         }

@@ -25,8 +25,8 @@ class PostViewModel {
         APIService.readPost(start: start, limit: limit) { [weak self] (data, error) in
             guard let self = self else { return }
             guard error == nil else {
+                LoadingIndicator.shared.hideIndicator()
                 self.errorObservable.onNext(error!)
-                print(error!)
                 return
             }
             guard let data = data else { return }
@@ -42,8 +42,8 @@ class PostViewModel {
         APIService.readPost(start: 0, limit: 20) { [weak self] (data, error) in
             guard let self = self else { return }
             guard error == nil else {
+                LoadingIndicator.shared.hideIndicator()
                 self.errorObservable.onNext(error!)
-                print(error!)
                 return
             }
             guard let data = data else { return }

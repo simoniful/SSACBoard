@@ -20,8 +20,15 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "새싹농장 로그인"
+        setNavigation()
         bind()
+    }
+    
+    func setNavigation() {
+        self.title = "로그인"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem =
+        UIBarButtonItem(customView: signInView.backButton)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.tintColor = .black
     }
     
     func bind() {

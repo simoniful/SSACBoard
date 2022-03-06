@@ -20,8 +20,15 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "새싹농장 가입하기"
+        setNavigation()
         bind()
+    }
+    
+    func setNavigation() {
+        self.title = "가입하기"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem =
+        UIBarButtonItem(customView: signUpView.backButton)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.tintColor = .black
     }
     
     func bind() {
@@ -30,12 +37,13 @@ class SignUpViewController: UIViewController {
             nickname: signUpView.nicknameTextFiled.rx.text,
             password: signUpView.passwordTextField.rx.text,
             checkPassword: signUpView.checkPasswordTextField.rx.text,
-            tap: signUpView.signUpButton.rx.tap)
+            singUpButtonTap: signUpView.signUpButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         Observable.combineLatest(output.validEmailStatus, output.validNicknameStatus, output.validPasswordStatus, output.differPasswordStatus) { a, b, c, d -> Bool in
             return a && b && c && d
-        }.bind(onNext: { result in
+        }.bind { [weak self] (result) in
+            guard let self = self else { return }
             self.signUpView.signUpButton.isEnabled = result
             if result {
                 UIView.animate(withDuration: 0.5) {
@@ -44,10 +52,11 @@ class SignUpViewController: UIViewController {
             } else {
                 self.signUpView.signUpButton.backgroundColor = .lightGray
             }
-        }).disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
             
         output.sceneTransition
-            .subscribe { _ in
+            .subscribe { [weak self] (_) in
+                guard let self = self else { return }
                 let nickname = self.signUpView.nicknameTextFiled.text ?? ""
                 let email = self.signUpView.emailTextField.text ?? ""
                 let password = self.signUpView.passwordTextField.text ?? ""
@@ -66,4 +75,5 @@ class SignUpViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
+    
 }

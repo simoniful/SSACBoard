@@ -25,7 +25,7 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "새싹농장"
+        self.title = "주위의 게시판"
         setNavigation()
         bind()
         postView.tableView.refreshControl = refreshControl
@@ -55,16 +55,16 @@ class PostViewController: UIViewController {
     
     func bind() {
         viewModel.postsObservable
-        .bind(to: postView.tableView.rx.items) { (tableView, row, element) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell() }
-            cell.nickNameLabel.text = element.user.username
-            cell.contentLabel.text = element.text
-            cell.createDateLabel.text = element.createdAt.toDate
-            cell.commentCountLabel.text = element.comments.count == 0 ? "댓글쓰기" : "댓글 \(element.comments.count)"
-            cell.selectionStyle = .none
-            return cell
-        }
-        .disposed(by: disposeBag)
+            .bind(to: postView.tableView.rx.items) { (tableView, row, element) in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell() }
+                cell.nickNameLabel.text = element.user.username
+                cell.contentLabel.text = element.text
+                cell.createDateLabel.text = element.createdAt.toDate
+                cell.commentCountLabel.text = element.comments.count == 0 ? "댓글쓰기" : "댓글 \(element.comments.count)"
+                cell.selectionStyle = .none
+                return cell
+            }
+            .disposed(by: disposeBag)
 
         Observable.zip(postView.tableView.rx.modelSelected(Post.self), postView.tableView.rx.itemSelected)
             .bind { (item, indexPath) in

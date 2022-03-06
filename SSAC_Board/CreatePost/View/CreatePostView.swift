@@ -11,6 +11,7 @@ class CreatePostView: UIView, ViewRepresentable {
     let textView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 18)
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         return textView
     }()
     

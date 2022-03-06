@@ -44,18 +44,9 @@ class DetailPostTableViewHeader: UITableViewHeaderFooterView, ViewRepresentable 
         return label
     }()
     
-    let profileStack: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.backgroundColor = .white
-        view.distribution = .fill
-        return view
-    }()
-    
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill")
-        imageView.backgroundColor = .systemGray5
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -105,42 +96,36 @@ class DetailPostTableViewHeader: UITableViewHeaderFooterView, ViewRepresentable 
         commentStack.addArrangedSubview(commentCountLabel)
     }
     
-    // 제약 관련 경고가 뜨는데 어디서 잘못된 건지 알 수 없음 
     func setupConstraints() {
         profileImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalTo(0)
+            $0.top.equalToSuperview().offset(15)
+            $0.leading.equalTo(15)
             $0.width.equalTo(44)
             $0.height.equalTo(44)
         }
         
         infoStack.snp.makeConstraints {
-            $0.centerY.equalTo(profileImageView)
+            $0.centerY.equalTo(profileImageView.snp.centerY)
             $0.leading.equalTo(profileImageView.snp.trailing).offset(10)
-            $0.trailing.equalTo(0)
+            $0.trailing.equalTo(-15)
         }
         
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(profileImageView.snp.bottom).offset(15)
-            $0.leading.equalTo(0)
-            $0.trailing.equalTo(0)
-           
+            $0.top.equalTo(profileImageView.snp.bottom).offset(10)
+            $0.leading.equalTo(15)
+            $0.trailing.equalTo(-15)
         }
-
-        contentLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        
+        iconImage.snp.makeConstraints {
+            $0.width.equalTo(commentCountLabel.snp.height)
+            $0.height.equalTo(iconImage.snp.height).multipliedBy(1.0)
+        }
     
         commentStack.snp.makeConstraints {
-            $0.top.equalTo(contentLabel.snp.bottom).offset(15)
-            $0.leading.equalTo(0)
-            $0.trailing.equalTo(0)
-            $0.height.equalTo(15)
+            $0.top.equalTo(contentLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(15)
+            $0.trailing.equalTo(-15)
             $0.bottom.equalToSuperview().offset(-15)
         }
-
-        iconImage.snp.makeConstraints {
-            $0.width.equalTo(commentStack.snp.height)
-        }
     }
-
-
 }

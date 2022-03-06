@@ -21,8 +21,15 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "비밀번호 변경"
+        setNavigation()
         bind()
+    }
+    
+    func setNavigation() {
+        self.title = "비밀번호 변경"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem =
+        UIBarButtonItem(customView: changePasswordView.backButton)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.tintColor = .black
     }
     
     func bind() {
