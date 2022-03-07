@@ -123,7 +123,6 @@ class APIService {
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
-        print(request)
         URLSession.request(.shared, endpoint: request, completion: completion)
     }
     

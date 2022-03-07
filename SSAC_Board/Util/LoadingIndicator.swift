@@ -33,7 +33,6 @@ class LoadingIndicator {
                 window.addSubview(loadingIndicatorView)
                 loadingIndicatorView.startAnimating()
             }
-            print("SHOW INDICATOR")
         }
     }
     
@@ -50,7 +49,6 @@ class LoadingIndicator {
                 window = win
             }
             window.subviews.filter({ $0 is UIActivityIndicatorView }).forEach( { $0.removeFromSuperview() } )
-            print("HIDE INDICATOR")
         }
     }
 }

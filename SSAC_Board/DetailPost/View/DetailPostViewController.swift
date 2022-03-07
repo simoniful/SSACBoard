@@ -80,7 +80,6 @@ class DetailPostViewController: UIViewController {
                             let ok = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
                                 self.viewModel.requestDeleteComment(element.id) {
                                     self.view.makeToast("댓글 삭제 완료!")
-                                    self.detailPostView.tableView.reloadData()
                                 }
                             }
                             let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
@@ -147,7 +146,6 @@ class DetailPostViewController: UIViewController {
                             self.view.makeToast("게시물 수정 완료!")
                             guard let data = data as? Post else { return }
                             self.postData = data
-                            self.detailPostView.tableView.reloadData()
                         }
                         self.navigationController?.pushViewController(vc, animated: true)
                     }

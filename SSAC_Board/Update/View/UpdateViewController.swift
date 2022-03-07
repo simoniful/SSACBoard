@@ -25,6 +25,7 @@ class UpdateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
+        bind()
         if let postData = postData {
             updateView.textView.text = postData.text
         }
@@ -33,6 +34,10 @@ class UpdateViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+    }
+
     func setNavigation() {
         title = "수정"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: updateView.backButton)

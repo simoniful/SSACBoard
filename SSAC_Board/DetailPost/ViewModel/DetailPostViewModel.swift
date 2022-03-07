@@ -58,8 +58,4 @@ extension DetailPostViewModel {
     var numberOfRowInSection: Int {
         return comments.count
     }
-    
-    func cellForRowAt(at indexPath: IndexPath) -> CommentElement {
-        return comments[indexPath.row]
-    }
 }

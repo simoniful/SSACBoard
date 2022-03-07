@@ -12,6 +12,7 @@ class UpdateView: UIView, ViewRepresentable {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.keyboardDismissMode = .interactive
         return textView
     }()
     

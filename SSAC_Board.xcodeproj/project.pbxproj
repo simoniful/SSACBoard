@@ -17,7 +17,6 @@
 		F46192D827D08E62007DA796 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D727D08E62007DA796 /* URLSession+Extension.swift */; };
 		F46192DA27D0A66B007DA796 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192D927D0A66B007DA796 /* Date+Extension.swift */; };
 		F46192DD27D0AFD7007DA796 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */; };
-		F46192DF27D0D77D007DA796 /* _Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46192DE27D0D77D007DA796 /* _Observable.swift */; };
 		F4755C13277DC65300CBE9C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C12277DC65300CBE9C9 /* AppDelegate.swift */; };
 		F4755C15277DC65300CBE9C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */; };
 		F4755C17277DC65300CBE9C9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755C16277DC65300CBE9C9 /* WelcomeViewController.swift */; };
@@ -50,6 +49,7 @@
 		F4755CA727831FDB00CBE9C9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CA627831FDB00CBE9C9 /* Comment.swift */; };
 		F4755CAA2783495200CBE9C9 /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CA82783495200CBE9C9 /* DetailPostTableViewCell.swift */; };
 		F4755CAD2783498500CBE9C9 /* DetailPostTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4755CAC2783498500CBE9C9 /* DetailPostTableViewHeader.swift */; };
+		F4D96A5D27D497370057FBF3 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D96A5C27D497370057FBF3 /* View.xib */; };
 		F4ECF58C2785B8E10026E8B2 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECF58B2785B8E10026E8B2 /* UpdateView.swift */; };
 		F4ECF58E2785B8EF0026E8B2 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECF58D2785B8EF0026E8B2 /* UpdateViewController.swift */; };
 		F4ECF5902785B8FA0026E8B2 /* UpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ECF58F2785B8FA0026E8B2 /* UpdateViewModel.swift */; };
@@ -64,7 +64,6 @@
 		F46192D727D08E62007DA796 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		F46192D927D0A66B007DA796 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		F46192DE27D0D77D007DA796 /* _Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Observable.swift; sourceTree = "<group>"; };
 		F4755C0F277DC65300CBE9C9 /* SSAC_Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSAC_Board.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4755C12277DC65300CBE9C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		F4755CA627831FDB00CBE9C9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F4755CA82783495200CBE9C9 /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
 		F4755CAC2783498500CBE9C9 /* DetailPostTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewHeader.swift; sourceTree = "<group>"; };
+		F4D96A5C27D497370057FBF3 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4ECF58B2785B8E10026E8B2 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		F4ECF58D2785B8EF0026E8B2 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		F4ECF58F2785B8FA0026E8B2 /* UpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewModel.swift; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F46192DC27D0AFD7007DA796 /* LoadingIndicator.swift */,
+				F4D96A5C27D497370057FBF3 /* View.xib */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -387,7 +388,6 @@
 		F4D5291727CFAB5E00BD7E41 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F46192DE27D0D77D007DA796 /* _Observable.swift */,
 				F4755C12277DC65300CBE9C9 /* AppDelegate.swift */,
 				F4755C14277DC65300CBE9C9 /* SceneDelegate.swift */,
 				F4755C1B277DC65600CBE9C9 /* Assets.xcassets */,
@@ -509,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4755C1F277DC65600CBE9C9 /* LaunchScreen.storyboard in Resources */,
+				F4D96A5D27D497370057FBF3 /* View.xib in Resources */,
 				F4755C1C277DC65600CBE9C9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +545,6 @@
 				F4755CA527831FC100CBE9C9 /* DetailPostViewModel.swift in Sources */,
 				F4755CAA2783495200CBE9C9 /* DetailPostTableViewCell.swift in Sources */,
 				F4755C3C277DE3DB00CBE9C9 /* User.swift in Sources */,
-				F46192DF27D0D77D007DA796 /* _Observable.swift in Sources */,
 				F4755C4E277DF0B400CBE9C9 /* APIService.swift in Sources */,
 				F4755C56277E8A6100CBE9C9 /* PostView.swift in Sources */,
 				F4755C30277DC91700CBE9C9 /* WelcomeVIew.swift in Sources */,
