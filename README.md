@@ -32,7 +32,7 @@
 
 # Issues
 
-- [JWT Token 핸들링]()
+- [JWT Token 핸들링](https://github.com/simoniful/iOS_Board/issues/1)
 - [MVVM의 비지니스 로직 분리]()
 - [RxSwift 활용에 있어서 주안점, Custom Observable에서 Rx로 바인딩]()
 - [URL Session의 모듈화 및, 차후 네트워크 구성에 있어서 고찰]()
