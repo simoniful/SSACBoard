@@ -27,6 +27,6 @@
 - [MVVM의 비지니스 로직 분리](https://github.com/simoniful/iOS_Board/issues/2)
 - [RxSwift 활용에 있어서 주안점, Custom Observable에서 Rx로 바인딩](https://github.com/simoniful/iOS_Board/issues/3)
 - [URL Session의 모듈화 및, 차후 네트워크 구성에 있어서 고찰](https://github.com/simoniful/iOS_Board/issues/4)
-- [Pagenation과 로딩 인디케이터](https://github.com/simoniful/iOS_Board/issues/5)
+- [Pagination과 로딩 인디케이터](https://github.com/simoniful/iOS_Board/issues/5)
 
 ---
