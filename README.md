@@ -2,8 +2,7 @@
 
 ## Overview
 
-<iframe id="video" width="300" src="https://user-images.githubusercontent.com/42762236/148384188-5edae9b9-d640-4f27-b9ef-a3f4eec26e54.mp4" frameborder="0">
-</iframe>
+[![Watch the video](https://user-images.githubusercontent.com/42762236/148384188-5edae9b9-d640-4f27-b9ef-a3f4eec26e54.mp4)](https://user-images.githubusercontent.com/42762236/148384188-5edae9b9-d640-4f27-b9ef-a3f4eec26e54.mp4)
 
 - 기간: 2021.12.25 ~ 2022.1.6
 - 회원가입, 로그인, 비밀번호 변경
