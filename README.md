@@ -31,16 +31,10 @@
 ## ScreenShot
 <div markdown="1">  
     <div align = "center">
-    <img src="https://user-images.githubusercontent.com/87598209/156905054-70c74a70-ab19-43b3-a1f1-0fda1ab89855.png" width="250px"></img>
     <img src="https://user-images.githubusercontent.com/87598209/156905379-3951d492-1872-4979-a48c-102e2f717b1c.png" width="250px"></img>
-    <img src="https://user-images.githubusercontent.com/87598209/156905380-19613004-013e-4f9f-9b3d-e06e14f4341f.png" width="250px"></img>
-</div>
-<div markdown="1">  
-    <div align = "center">
     <img src="https://user-images.githubusercontent.com/87598209/156905057-749c83a3-bdb3-4917-a2fe-caf833db3741.png" width="250px"></img>
-    <img src="https://user-images.githubusercontent.com/87598209/156905058-9502d269-acac-44dd-afa6-26c486ac5324.png" width="250px"></img>
     <img src="https://user-images.githubusercontent.com/87598209/156905060-30f1e940-2399-49f4-9f0f-f250c90cab1f.png" width="250px"></img>
-</div>  
+</div>
 
 ---
 
